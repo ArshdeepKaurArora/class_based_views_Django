@@ -1,0 +1,68 @@
+body{
+    font-family: sans-serif;
+}
+
+form{
+    width: 50%;
+    max-width: 30%;
+    padding: 2rem;
+    box-shadow: 0px 2px 8px rgb(0, 0, 0);
+    border-radius: 10px;
+    background-color: white;
+    margin-top: 4px;
+    margin-left: 10px;
+    align-items: left;
+}
+
+button{
+    cursor: pointer;
+    background-color: rgb(11, 104, 73);
+    border-color: rgb(11, 104, 73);
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    width: 4rem;
+    height:2rem;
+    margin-top: 0.5rem;
+}
+
+button:hover,
+button:active{
+    background-color: rgb(13, 136, 136);
+}
+
+.form-control{
+    padding-bottom: 1rem;
+}
+
+.form-control input{
+    font: inherit;
+    padding: 0.25rem;
+    border-radius: 2px;
+    border: 1.5px solid;
+    width: 90%;
+}
+
+#id_review{
+    width: 90%;
+    height: 70px;
+    border: 1.5px solid;
+}
+
+.form-control input:focus{
+    border-color: black;
+}
+
+.form-control label{
+    font-weight: bold;
+}
+
+.errorlist{
+    list-style: none;
+    color: rgb(160, 28, 28);
+    padding-left: 0;
+}
+
+.errors label{
+    color: rgb(160, 28, 28);
+}
