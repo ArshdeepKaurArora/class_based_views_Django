@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Dict
 from django.shortcuts import render
 from django.views import View
 from .form import ReviewsForm
@@ -88,9 +88,26 @@ class AllReviewsView(ListView):
 #         context["review"] = selected_review
 #         return context
     
-    
 class ReviewDetailView(DetailView):
     """Return detailed view of review using DetailView feature of Django""" 
     model = ReviewsModel
     template_name = "reviews/review_detail.html"
     context_object_name = 'review'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        loaded_review = self.object
+        request = self.request
+        favorite_id = request.session.get('favorite_review')
+        context["is_favorite"] = favorite_id == str(loaded_review.id)
+        return context
+    
+
+class AddFavoriteReview(View):
+    """To count favorite review"""
+    def post(self, request):
+        review_id = request.POST['review_id']
+        request.session["favorite_review"] = review_id
+        redirect_path = reverse("review_detail",kwargs={"pk":review_id})
+        return HttpResponseRedirect(redirect_path)
+
